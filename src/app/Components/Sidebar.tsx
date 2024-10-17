@@ -20,13 +20,13 @@ import { RxHamburgerMenu } from "react-icons/rx";
             <li className=" w-full flex justify-end">
               
                 <button onClick={() => setIsOpen(false)}  className=" text-gray-900 rounded-lg dark:text-white  ">
-                    <IoMdClose className="text-2xl dark:hover:bg-gray-700 rounded-md  xl:text-3xl 2xl:text-6xl"/>
+                    <IoMdClose className="text-xl dark:hover:bg-gray-700 rounded-md  xl:text-3xl 2xl:text-6xl"/>
                 </button>
             </li>
             <li className="w-full flex justify-center hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700">
                 <a href="#" className="flex items-center justify-evenly p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 xl:p-2">
-                  <IoChatboxEllipses className="xl:text-3xl 2xl:text-6xl" />
-                  <span className="ms-3 lg:text-xl xl:text-3xl 2xl:text-5xl">New Chat</span>
+                  <IoChatboxEllipses className="xl:text-xl 2xl:text-6xl" />
+                  <span className="ms-3 lg:text-xl xl:text-xl 2xl:text-5xl">New Chat</span>
                 </a>
             </li>
            
