@@ -23,7 +23,9 @@ const Chat = () => {
     <div className="w-full flex flex-col h-auto items-center justify-between pt-6 bg-black">
       
       {messages.length > 0 ?
-        <div ref={divRef}  className={`bg-gray-900 overflow-y-auto w-4/5 rounded-xl  h-auto py-5 px-5 text-white 2xl:text-4xl ${anybody.className}`}>
+        <div 
+          ref={divRef}  
+          className={`bg-gray-900 overflow-y-auto w-4/5 rounded-xl  h-auto py-5 px-5 text-white 2xl:text-4xl ${anybody.className}`}>
           {messages.map((message : Message) => {
             return (
               <div  key={message.id}>
