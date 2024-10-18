@@ -2,7 +2,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Create .env file, then add OPENAI_API_KEY = "your key" 
+
+Then, run the development server:
 
 ```bash
 npm run dev
