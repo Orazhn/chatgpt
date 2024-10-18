@@ -9,7 +9,7 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 
-// POST localhost:3000/api/chat
+
 export async function POST(request: Request) {
     const { messages } = await request.json(); 
 
