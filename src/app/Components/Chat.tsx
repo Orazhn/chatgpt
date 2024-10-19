@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef } from 'react';
-import LoadingIcons from 'react-loading-icons'
 import { IoSend } from "react-icons/io5";
 import { useChat, Message } from "ai/react"
 import {Anybody} from 'next/font/google'
@@ -56,8 +55,8 @@ const Chat = () => {
           })}
         </div> :
         <div className='text-white h-screen flex flex-col justify-center gap-2 items-center '>
-          <p className={`text-2xl lg:text-5xl 2xl:text-8xl ${geologica.className}`}>Ask any question</p> 
-          <LoadingIcons.SpinningCircles className='text-2xl lg:text-4xl 2xl:text-6xl'></LoadingIcons.SpinningCircles> 
+          <img src="favicon.ico" className='w-20 h-20'/>
+          <p className={`text-2xl lg:text-5xl text-center 2xl:text-8xl ${geologica.className}`}>Hi there! Feel free to ask anything</p> 
         </div>
       }
       

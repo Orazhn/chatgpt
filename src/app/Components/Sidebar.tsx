@@ -17,14 +17,14 @@ import { RxHamburgerMenu } from "react-icons/rx";
       <aside id="default-sidebar" className={`top-0 left-0 z-40 sm:w-2/3 lg:w-72 h-full transition-transform -translate-x-full sm:translate-x-0 sm:fixed dark lg:relative  2xl:w-full`} aria-label="Sidebar">
       <div className="h-full px-3 py-4 overflow-y-hidden bg-gray-50 dark:bg-gray-800 2xl:w-96">
           <ul className="space-y-4 font-medium">
-            <li className=" w-full flex justify-end">
-              
-                <button onClick={() => setIsOpen(false)}  className=" text-gray-900 rounded-lg dark:text-white  ">
+            <li className=" w-full flex justify-between items-center" >
+                <img src="favicon.ico" className="w-7 h-7"/>
+                <button onClick={() => setIsOpen(false)}  className=" text-gray-900 rounded-lg  dark:text-white">
                     <IoMdClose className="text-xl dark:hover:bg-gray-700 rounded-md  xl:text-3xl 2xl:text-6xl"/>
                 </button>
             </li>
-            <li className="w-full flex justify-center hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700">
-                <button onClick={() => window.location.reload()} className="flex items-center justify-evenly p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 xl:p-2">
+            <li onClick={() => window.location.reload()}  className="w-full flex justify-center hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700">
+                <button className="flex items-center justify-evenly p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 xl:p-2">
                   <IoChatboxEllipses className="xl:text-xl 2xl:text-6xl" />
                   <span className="ms-3 lg:text-xl xl:text-xl 2xl:text-5xl">New Chat</span>
                 </button>
