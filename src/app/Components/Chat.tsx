@@ -4,27 +4,51 @@ import { IoSend } from "react-icons/io5";
 import { useChat, Message } from "ai/react"
 import {Anybody} from 'next/font/google'
 import { Geologica } from 'next/font/google';
+import { kv } from '@vercel/kv'
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 const anybody = Anybody({ subsets: ['latin'] })
 const geologica = Geologica({subsets: ['latin']})
 
-const Chat = () => {
-  const { input, handleInputChange, handleSubmit, isLoading, messages } = useChat();
+const  Chat = () => {
+  const { input, handleInputChange, handleSubmit, messages } = useChat();
   const divRef = useRef<HTMLDivElement>(null);
+
+interface IChat {
+  content: string,
+  createdAt?: any,
+  id: string,
+  role: "function" | "user" | "assistant" | "data" | "system" | "tool"
+}
+
 
   useEffect(() => {
     if (divRef.current) {
       divRef.current.scrollTop = divRef.current.scrollHeight;
     }
+    
   }, [messages]);
 
   return (
-    <div className="w-full flex flex-col h-auto items-center justify-between pt-6 bg-black">
-      
+    <div className="w-full flex flex-col h-auto items-center justify-between bg-black">
+      <div className='self-end pr-4 pt-4 absolute'>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+      </div>
+       
       {messages.length > 0 ?
         <div 
           ref={divRef}  
-          className={`bg-gray-900 overflow-y-auto w-4/5 rounded-xl  h-auto py-5 px-5 text-white 2xl:text-4xl ${anybody.className}`}>
+          className={`bg-gray-900 overflow-y-auto w-4/5 rounded-xl mt-5 h-auto py-5 px-5 text-white 2xl:text-4xl ${anybody.className}`}>
           {messages.map((message : Message) => {
             return (
               <div  key={message.id}>
@@ -64,10 +88,11 @@ const Chat = () => {
           onSubmit={handleSubmit}>
           <input
             className="flex border w-full py-3 px-3 h-14 text-xl border-gray-300 p-2 rounded-xl text-black  2xl:py-16
-            2xl:text-5xl"
+              2xl:text-5xl"
             placeholder="Write your question..."
             value={input}
             onChange={handleInputChange}
+            autoFocus
           />
           <button
             type="submit"

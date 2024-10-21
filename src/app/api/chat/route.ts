@@ -13,9 +13,6 @@ const openai = new OpenAIApi(config);
 export async function POST(request: Request) {
     const { messages } = await request.json(); 
 
-    
-    console.log(messages);
-
   
 
     

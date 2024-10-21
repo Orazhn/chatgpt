@@ -23,8 +23,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
                     <IoMdClose className="text-xl dark:hover:bg-gray-700 rounded-md  xl:text-3xl 2xl:text-6xl"/>
                 </button>
             </li>
-            <li onClick={() => window.location.reload()}  className="w-full flex justify-center hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700">
-                <button className="flex items-center justify-evenly p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 xl:p-2">
+            <li className="w-full flex justify-center hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700">
+                <button  className="flex items-center justify-evenly p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 xl:p-2">
                   <IoChatboxEllipses className="xl:text-xl 2xl:text-6xl" />
                   <span className="ms-3 lg:text-xl xl:text-xl 2xl:text-5xl">New Chat</span>
                 </button>

@@ -24,9 +24,13 @@ const config: Config = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
+      backgroundColor: {
+        'main-bg': '#000724',  // Replace this with your preferred color
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        main: 'blue'
       },
     },
   },
