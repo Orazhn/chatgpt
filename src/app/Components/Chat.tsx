@@ -4,7 +4,7 @@ import { IoSend } from "react-icons/io5";
 import { useChat, Message } from "ai/react"
 import {Anybody} from 'next/font/google'
 import { Geologica } from 'next/font/google';
-import { kv } from '@vercel/kv'
+import Image from 'next/image';
 import {
   SignInButton,
   SignedIn,
@@ -18,14 +18,6 @@ const geologica = Geologica({subsets: ['latin']})
 const  Chat = () => {
   const { input, handleInputChange, handleSubmit, messages } = useChat();
   const divRef = useRef<HTMLDivElement>(null);
-
-interface IChat {
-  content: string,
-  createdAt?: any,
-  id: string,
-  role: "function" | "user" | "assistant" | "data" | "system" | "tool"
-}
-
 
   useEffect(() => {
     if (divRef.current) {
@@ -57,13 +49,13 @@ interface IChat {
                       message.role === "assistant"
                       ?
                       <h3 className="text-lg font-semibold mt-4 flex items-stretch gap-2">
-                          <img className='w-7 h-7' src="/icons/bot.png" /> 
+                          <Image src="/icons/bot.png" width={30} height={20} alt='gpt'/> 
                           <span>GPT-4</span>
                       </h3>
                       :
                       <h3 className="text-lg font-semibold mt-4 justify-end items-stretch flex gap-2">
                           <span>User</span>
-                          <img className='w-7 h-7' src="/icons/user.png" />
+                          <Image src="/icons/user.png" width={30} height={20} alt='user'/>
                           
                       </h3>
                   }
@@ -79,7 +71,7 @@ interface IChat {
           })}
         </div> :
         <div className='text-white h-screen flex flex-col justify-center gap-2 items-center '>
-          <img src="favicon.ico" className='w-20 h-20'/>
+          <Image src="/favicon.ico" width={100} height={100} alt='icon'/>
           <p className={`text-2xl lg:text-5xl text-center 2xl:text-8xl ${geologica.className}`}>Hi there! Feel free to ask anything</p> 
         </div>
       }

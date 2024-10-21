@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Image from "next/image";
 
 
   const Sidebar = () => {
@@ -18,7 +19,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
       <div className="h-full px-3 py-4 overflow-y-hidden bg-gray-50 dark:bg-gray-800 2xl:w-96">
           <ul className="space-y-4 font-medium">
             <li className=" w-full flex justify-between items-center" >
-                <img src="favicon.ico" className="w-7 h-7"/>
+                <Image src="/favicon.ico" width={30} height={30} alt="icon"/>
                 <button onClick={() => setIsOpen(false)}  className=" text-gray-900 rounded-lg  dark:text-white">
                     <IoMdClose className="text-xl dark:hover:bg-gray-700 rounded-md  xl:text-3xl 2xl:text-6xl"/>
                 </button>
