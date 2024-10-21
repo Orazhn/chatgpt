@@ -1,8 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+Create .env.local file, then add 
+OPENAI_API_KEY = "your key" 
 
-Create .env file, then add OPENAI_API_KEY = "your key" 
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=key
+CLERK_SECRET_KEY=key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
 
 Then, run the development server:
 
