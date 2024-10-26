@@ -25,6 +25,7 @@ const Modal: FC <ModalProps> = ({setOpen, open, messages}) => {
                 body: JSON.stringify({input, messages: messages}),
               });
             setOpen(false)
+            window.location.reload()
         }else 
             setWarning('name a chat!')
     }
