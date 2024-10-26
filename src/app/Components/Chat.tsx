@@ -43,7 +43,7 @@ const Chat: FC<ChatProps> = ({ setAllMessages, oldmessages }) => {
           <UserButton />
         </SignedIn>
       </div>
-            {oldmessages?.length | messages.length ?
+            {oldmessages?.length || messages.length ?
               <div
               ref={divRef}
               className={`bg-gray-900 overflow-y-auto w-4/5 rounded-xl mt-5 h-auto py-5 px-5 text-white 2xl:text-4xl ${anybody.className}`}
@@ -106,7 +106,7 @@ const Chat: FC<ChatProps> = ({ setAllMessages, oldmessages }) => {
                 </p> 
             </div>
             }
-            
+
       <form className="sticky bottom-0 p-4 w-2/3 flex justify-center gap-2 sm:w-full md:w-2/3" onSubmit={handleSubmit}>
         <input
           className="flex border w-full py-3 px-3 h-14 text-xl border-gray-300 p-2 rounded-xl text-black 2xl:py-16 2xl:text-5xl"
