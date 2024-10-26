@@ -8,7 +8,7 @@ import { IMessage } from '@/app/types/Chat'
 import LoadingIcons from 'react-loading-icons'
 
 
-const page = ({params}: {params: {Chat: string}}) => {
+const Page = ({params}: {params: {Chat: string}}) => {
   const [allMessages, setAllMessages] = useState<IMessage[]>([])
   const [oldChat, setOldChat] = useState<IChatList | undefined>()
   const [loading, setLoading] = useState<boolean>(true)
@@ -20,7 +20,7 @@ const page = ({params}: {params: {Chat: string}}) => {
         setOldChat(data?.find(chat => chat.id === params.Chat));
         setLoading(false)
       }
-      fetchChats();
+      fetchChats()
     }, [])
    
   return (
@@ -46,7 +46,7 @@ const page = ({params}: {params: {Chat: string}}) => {
     )
 }
 
-export default page
+export default Page
 
 
 
