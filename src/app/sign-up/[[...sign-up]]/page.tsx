@@ -1,4 +1,6 @@
 import { SignUp } from "@clerk/nextjs";
+import React from "react";
+
 export default function SignUpPage() {
     return (
         <div className="w-screen h-screen overflow-hidden flex justify-evenly items-center bg-main-bg bg-[url('/backgrounds/sign_up_page_bg.jpg')] bg-cover bg-center flex-col ">
