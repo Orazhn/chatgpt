@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react'
 import Sidebar from '@/app/Components/Sidebar'
 import Chat from '@/app/Components/Chat'
 import { IChatList } from '@/app/types/Chat'
-import getChats from '@/app/api/chats/route'
 import { IMessage } from '@/app/types/Chat'
 import LoadingIcons from 'react-loading-icons'
 
@@ -15,8 +14,8 @@ const Page = ({params}: {params: {Chat: string}}) => {
 
     useEffect(() => {
       const fetchChats = async () => {
-        const data = await getChats();
-      
+        const response = await fetch('/api/chats', {method: 'GET'});
+        const data:IChatList[] = await response.json()
         setOldChat(data?.find(chat => chat.id === params.Chat));
         setLoading(false)
       }

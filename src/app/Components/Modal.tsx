@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { FC } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { IoChatboxEllipsesOutline } from 'react-icons/io5' 
-import { postData } from '../api/chats/route'
 import { IMessage } from '../types/Chat'
 
 
@@ -16,9 +15,15 @@ const Modal: FC <ModalProps> = ({setOpen, open, messages}) => {
     const [input, setInput] = useState<string>('')
     const [warning, setWarning] = useState<string>('')
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (input.trim().length){
-            postData({input, messages: messages})
+            await fetch('/api/chats', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({input, messages: messages}),
+              });
             setOpen(false)
         }else 
             setWarning('name a chat!')

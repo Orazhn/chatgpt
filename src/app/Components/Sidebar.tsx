@@ -4,7 +4,6 @@ import { IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Image from "next/image";
 import Modal from "./Modal";
-import getChats from "../api/chats/route";
 import { IChatList, IMessage } from "../types/Chat";
 import { useRouter } from 'next/navigation'
 import LoadingIcons from 'react-loading-icons'
@@ -27,7 +26,8 @@ interface MessagesComponentProps {
 
     useEffect(() => {
       const fetchChats = async () => {
-        const data = await getChats();
+        const response = await fetch('/api/chats', {method: 'GET'});
+        const data = await response.json()
         setChats(data);
         setChatsLoading(false)
       }

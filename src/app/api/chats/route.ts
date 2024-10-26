@@ -10,26 +10,34 @@ const redis = new Redis({
 })
 
 
-export default async function getChats() {
+export async function GET() {
   try {
     const data:IChatList[]  = await redis.lrange('chats:123', 0, -1);
-    return data
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   } catch (error) {
     console.error('Redis error:', error);
   }
 }
 
-export async function postData({input, messages}: IChat) {
-  const obj = {
-    name: input,
-    id: uuidv4(),
-    messages: messages,
-  }
+export async function POST(req: Request) {
   try {
-      await redis.rpush('chats:123', JSON.stringify(obj))
-      console.log('Messages posted successfully.');
+    const { input, messages }: IChat = await req.json();
+
+    const obj = {
+      name: input,
+      id: uuidv4(),
+      messages: messages,
+    };
+
+    await redis.rpush('chats:123', JSON.stringify(obj));
+    return new Response('Messages posted successfully', { status: 201 });
   } catch (error) {
-      console.error('Redis error while posting:', error);
+    console.error('Redis error while posting:', error);
+    return new Response('Failed to post messages', { status: 500 });
   }
 }
-
