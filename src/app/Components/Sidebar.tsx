@@ -75,13 +75,13 @@ interface MessagesComponentProps {
             <li onClick={() => setOpen(true)} className="w-full flex justify-center hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700">
                 <button className="flex items-center justify-evenly p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 xl:p-2">
                   <MdSaveAlt className="xl:text-xl 2xl:text-6xl" />
-                  <span className="ms-3 lg:text-xl xl:text-xl 2xl:text-5xl">Save Chat</span>
+                  <span className="ms-3 lg:text-lg xl:text-lg 2xl:text-5xl">Save Chat</span>
                 </button>
             </li>
             <li onClick={() => {router.push(`/`)}} className="w-full flex justify-center hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700">
                 <button className="flex items-center justify-evenly p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 xl:p-2">
                   <IoChatboxEllipses className="xl:text-xl 2xl:text-6xl" />
-                  <span className="ms-3 lg:text-xl xl:text-xl 2xl:text-5xl">New Chat</span>
+                  <span className="ms-3 lg:text-lg xl:text-lg 2xl:text-5xl">New Chat</span>
                 </button>
             </li>
             <hr className="border-t-2 border-gray-500 my-4"/>
@@ -92,7 +92,11 @@ interface MessagesComponentProps {
               </div>
               :
               <div className="h-full">
-                  <p className="text-center font-semibold text-lg py-3">My Chats</p>
+                <div className="w-full justify-between flex items-center px-1" >
+                  <span className="text-center  font-semibold text-lg py-3">My Chats</span>
+                  <span className="text-gray-400">{chats?.length}</span>
+                </div>
+                  
                   <ul className="list-none h-full flex flex-col gap-2">
                   {chats?.length ? 
                     chats?.map((chat, index) => 
