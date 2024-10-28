@@ -9,6 +9,8 @@ import { useRouter } from 'next/navigation'
 import LoadingIcons from 'react-loading-icons'
 import { MdSaveAlt } from "react-icons/md";
 import { IoChatboxEllipses } from "react-icons/io5";
+import { MdDeleteOutline } from "react-icons/md";
+import { PiChatSlashDuotone } from "react-icons/pi";
 
 
 
@@ -38,6 +40,22 @@ interface MessagesComponentProps {
       router.push(`/chats/${id}`)
     }
 
+    const deleteChat = async(id: string) => {
+      try {
+        const response = await fetch('/api/chats', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ id })
+        });
+        router.push(`/`)
+        const result = await response.json();
+        console.log(result.message); 
+      } catch (error) {
+        console.error('Error deleting chat:', error);
+      }
+    }
     return (
         <div>
           <Modal open ={open} setOpen={setOpen} messages={allMessages}></Modal>
@@ -76,12 +94,21 @@ interface MessagesComponentProps {
               <div className="h-full">
                   <p className="text-center font-semibold text-lg py-3">My Chats</p>
                   <ul className="list-none h-full flex flex-col gap-2">
-                  {
+                  {chats?.length ? 
                     chats?.map((chat, index) => 
-                      <li key={index} onClick={() => changeChat(chat.id)} className="w-full flex justify-center hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700 p-2 text-lg">
-                          {chat.name}
-                      </li>)
+                      <li key={index} className="w-full flex justify-between hover:bg-gray-700 rounded-md cursor-pointer border border-gray-700 p-2 text-lg items-center">
+                          <p onClick={() => changeChat(chat.id)} className="w-full">{chat.name}</p>
+                          <div onClick={() => deleteChat(chat.id)} className="p-2 hover:bg-gray-800 rounded-md ransform transition-transform duration-300 hover:scale-110">
+                            <MdDeleteOutline />
+                          </div>
+                      </li>
+                    ) :
+                    <div className="w-full items-center flex flex-col gap-2 p-2 bg-slate-700 rounded-lg">
+                      <p className="font-mono">You have no saved chats</p> 
+                      <PiChatSlashDuotone className="text-xl"/>
+                    </div>
                   }
+                  
                   </ul>
                   
               </div>
@@ -91,9 +118,6 @@ interface MessagesComponentProps {
       </div>
   </aside>
       }
-   
-    
-    
 </div>
     );
   }

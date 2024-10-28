@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { IChat } from '@/app/types/Chat';
 
 
+
 const redis = new Redis({
   url: 'https://fluent-terrier-27867.upstash.io',
   token: 'AWzbAAIjcDE1NjQyMjcyOWQ2NDY0M2NhYmJhZThhNDY0MzQ4YTc5MHAxMA',
@@ -40,4 +41,28 @@ export async function POST(req: Request) {
     console.error('Redis error while posting:', error);
     return new Response('Failed to post messages', { status: 500 });
   }
+}
+
+
+export async function DELETE (req: Request) {
+  try {
+    const {id} = await req.json()
+
+    const chats: IChatList[] = await redis.lrange('chats:123', 0, -1);
+
+    // Find the chat that matches the chatId
+    const chatToRemove = chats.find(chat => chat.id === id);
+
+    if (!chatToRemove) {
+      throw new Error(`Chat with ID ${id} not found.`);
+    }
+    await redis.lrem('chats:123', 1, JSON.stringify(chatToRemove));
+    console.log(`Chat with ID ${id} deleted successfully.`);
+  } catch (error) {
+    console.error('Redis error while deleting chat:', error);
+    throw error;  // Propagate the error to be handled in the API route
+  }
+
+
+
 }
