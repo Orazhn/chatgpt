@@ -2,12 +2,14 @@ import { Redis } from '@upstash/redis'
 import { IChatList } from '@/app/types/Chat'
 import { v4 as uuidv4 } from 'uuid';
 import { IChat } from '@/app/types/Chat';
+import dotenv from 'dotenv';
 
 
+dotenv.config({ path: '.env.local' });
 
 const redis = new Redis({
-  url: 'https://fluent-terrier-27867.upstash.io',
-  token: 'AWzbAAIjcDE1NjQyMjcyOWQ2NDY0M2NhYmJhZThhNDY0MzQ4YTc5MHAxMA',
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN
 })
 
 
