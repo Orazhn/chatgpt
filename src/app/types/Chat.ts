@@ -1,9 +1,9 @@
 export interface IMessage {
-    content: string, 
-    createdAt?: Date, 
-    id: string,
-    role: "function" | "user" | "system" | "assistant" | "data" | "tool"
-  }
+  content: string, 
+  createdAt?: Date, 
+  id: string,
+  role: "function" | "user" | "system" | "assistant" | "data" | "tool"
+}
 
 export interface IChatList {
   name: string,

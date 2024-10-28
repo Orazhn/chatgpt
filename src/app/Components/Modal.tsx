@@ -16,7 +16,7 @@ const Modal: FC <ModalProps> = ({setOpen, open, messages}) => {
     const [warning, setWarning] = useState<string>('')
 
     const handleSubmit = async () => {
-        if (input.trim().length){
+        if (input.trim().length && messages?.length){
             await fetch('/api/chats', {
                 method: 'POST',
                 headers: {
@@ -36,7 +36,6 @@ const Modal: FC <ModalProps> = ({setOpen, open, messages}) => {
           transition
           className="fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
         />
-  
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <DialogPanel
@@ -55,7 +54,7 @@ const Modal: FC <ModalProps> = ({setOpen, open, messages}) => {
                     <div className="mt-2">
                         <input value={input} autoFocus onChange={e => setInput(e.target.value) } type="text" placeholder='exam answers' className='border border-black rounded-md p-1 w-full text-black'/>
                     </div>
-                    <p className={warning.length > 0 ? 'text-red-700 pt-2' : 'pt-2'}>
+                    <p className={`${warning.length && 'text-red-700'} pt-2`}>
                         {warning}
                     </p>
                   </div>

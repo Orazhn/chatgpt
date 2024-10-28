@@ -10,8 +10,8 @@ export default function Page() {
 
   return (
     <div className = "w-screen h-screen flex justify-center bg-black" >
-          <Sidebar allMessages = {allMessages}/>
-          <Chat  setAllMessages = {setAllMessages}/>
+      <Sidebar allMessages = {allMessages}/>
+      <Chat  setAllMessages = {setAllMessages}/>
     </div>
-  );
+  )
 }

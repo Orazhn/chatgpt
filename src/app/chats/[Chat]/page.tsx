@@ -24,22 +24,18 @@ const Page = ({params}: {params: {Chat: string}}) => {
    
   return (
       <div className = "w-screen h-screen flex justify-center bg-black">
-        
         {loading ? 
           <div className='items-center w-screen h-screen flex justify-center flex-col gap-4'>
             <p className='text-2xl'>Wait a second...</p>
             <LoadingIcons.Oval/>
           </div>
-          
           :
           <>
             <Sidebar allMessages = {allMessages}/>
             <Chat  
               setAllMessages = {setAllMessages} 
-              oldmessages={oldChat?.messages}
-            />
+              oldmessages={oldChat?.messages}/>
           </>
-          
         }
       </div>
     )
