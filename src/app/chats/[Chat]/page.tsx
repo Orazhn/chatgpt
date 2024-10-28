@@ -20,7 +20,7 @@ const Page = ({params}: {params: {Chat: string}}) => {
         setLoading(false)
       }
       fetchChats()
-    }, [])
+    }, [params.Chat])
    
   return (
       <div className = "w-screen h-screen flex justify-center bg-black">
