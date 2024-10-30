@@ -11,7 +11,7 @@ const config: Config = {
       'sm': '320px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '768px',
+      'md': '720px',
       // => @media (min-width: 768px) { ... }
 
       'lg': '1024px',
